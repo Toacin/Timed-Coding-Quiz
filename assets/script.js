@@ -23,10 +23,10 @@ const answerChoices = [["Section","Article","Aside","Img"],
 ["length","concat","slice","unshift"],
 ["number","boolean","string","undefined"],
 ["row","row-reverse","column","column-reverse"]];
-let secondsLeft = 30;
+let secondsLeft = 15;
 
 function setTimer() {
-    $timer.textContent = `Time Left: 30 seconds left`;
+    $timer.textContent = `Time Left: 15 seconds left`;
     let timerInterval = setInterval(function() {
         secondsLeft = secondsLeft - 1;
         $timer.textContent = `Time Left: ${secondsLeft} seconds left`;
@@ -38,6 +38,10 @@ function setTimer() {
             clearInterval(timerInterval);
             $timer.textContent = `Time Left: 0 seconds left`;
             alert("you suck");
+        }
+        if(scrollIndex === 5) {
+            clearInterval(timerInterval);
+            $timer.textContent = '';
         }
     }, 1000);
 }
@@ -60,9 +64,14 @@ function questionScroller () {
         $choice2.checked = false;
         $choice3.checked = false;
         $choice4.checked = false;
+    } else if (scrollIndex === 4) {
+        finalScore = secondsLeft - scoreMod;
+        alert(`Your final score is ${finalScore}`);
+        scrollIndex++;
     }
 }
 
+let scoreMod = 0;
 function answerChecker (e) {
     if (e.currentTarget.value == "Img" || e.currentTarget.value == "^" || e.currentTarget.value == "length" || e.currentTarget.value == "string" || e.currentTarget.value == "row") {
         $quizResponse.textContent = "That's correct!";
@@ -72,6 +81,7 @@ function answerChecker (e) {
         $quizResponse.textContent = "That is incorrect";
         $quizResponse.style.display = "block";
         $quizResponse.style.color = "red";
+        scoreMod = scoreMod + 1;
     }
 };
 
