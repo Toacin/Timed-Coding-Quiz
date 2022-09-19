@@ -1,0 +1,91 @@
+body {
+    background-color: rgba(39, 245, 225, 0.17);
+    font-family: fantasy, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4em;
+    margin: 50px;
+}
+
+main {
+    background-color: rgba(255,255,255,1);
+    width: 80%;
+    margin: auto;
+    height: 800px;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#timer {
+    position: absolute;
+    top: 61px;
+    right: 128px;
+    font-size: 1.7em;
+    color: grey;
+}
+
+#startingMessage {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#startingHeader {
+    font-size: 3em;
+    margin: 40px 0px;
+}
+
+#info {
+    font-size: 1.5em;
+    margin: 40px 0px;
+}
+
+#starting-button, #next-button {
+    background-color: rgba(39, 245, 225, 1);
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2em;
+    border-radius: 20px;
+    margin: 30px;
+    border: none;
+}
+
+#starting-button:hover, #next-button:hover {
+    cursor: pointer;
+    background-color: rgba(50, 166, 154, 1);
+}
+
+
+form {
+    display: block;
+    font-size: 3em;
+    width: 75%;
+}
+
+
+form h3, input {
+    margin: 20px;
+}
+
+.choices {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+#next-button {
+    font-size: .5em;
+    padding: 12px 17px;
+    margin-top: 50px;
+}
+
