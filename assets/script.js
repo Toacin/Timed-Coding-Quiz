@@ -1,4 +1,5 @@
 const $startbutton = document.querySelector("#starting-button");
+const $startingHeader = document.querySelector("#startingHeader");
 const $startingMessage = document.querySelector("#startingMessage");
 const $questionForm = document.querySelector("form");
 const $timer = document.querySelector("#timer");
@@ -23,7 +24,7 @@ const answerChoices = [["Section","Article","Aside","Img"],
 ["length","concat","slice","unshift"],
 ["number","boolean","string","undefined"],
 ["row","row-reverse","column","column-reverse"]];
-let secondsLeft = 15;
+let secondsLeft = 5;
 
 function setTimer() {
     $timer.textContent = `Time Left: 15 seconds left`;
@@ -37,9 +38,15 @@ function setTimer() {
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
             $timer.textContent = `Time Left: 0 seconds left`;
-            alert("you suck");
+            scrollIndex = 0;
+            $questionForm.style.display = "none";
+            $startingHeader.textContent = "Time's Up";
+            document.querySelector("#info").textContent = "Click START button to try again!"
+            $startingMessage.style.display = "inherit";
+            secondsLeft = 5;
+            scoreMod = 0;
         }
-        if(scrollIndex === 5) {
+        if(scrollIndex === 6) {
             clearInterval(timerInterval);
             $timer.textContent = '';
         }
@@ -48,7 +55,7 @@ function setTimer() {
 
 let scrollIndex = 0;
 function questionScroller () {
-    if (scrollIndex<4) {
+    if (scrollIndex<5) {
         $quizResponse.style.display = "none";
         $question.textContent = questions[scrollIndex];
         $choi1.textContent = (answerChoices[scrollIndex][0]);
@@ -59,12 +66,15 @@ function questionScroller () {
         $choice2.value = answerChoices[scrollIndex][1];
         $choice3.value = answerChoices[scrollIndex][2];
         $choice4.value = answerChoices[scrollIndex][3];
+        if (scrollIndex === 4) {
+            $nextButton.textContent = "Submit";
+        }
         scrollIndex++;
         $choice1.checked = false;
         $choice2.checked = false;
         $choice3.checked = false;
         $choice4.checked = false;
-    } else if (scrollIndex === 4) {
+    } else if (scrollIndex === 5) {
         finalScore = secondsLeft - scoreMod;
         alert(`Your final score is ${finalScore}`);
         scrollIndex++;
