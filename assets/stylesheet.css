@@ -92,3 +92,9 @@ form h3, input {
     padding: 12px 17px;
     margin-top: 50px;
 }
+
+#quizResponse {
+    font-size: .7em;
+    color: black;
+    display:block;
+}
