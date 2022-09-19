@@ -70,13 +70,11 @@ main {
     background-color: rgba(50, 166, 154, 1);
 }
 
-
 form {
     display: none;
     font-size: 3em;
     width: 75%;
 }
-
 
 form h3, input {
     margin: 20px;
@@ -94,4 +92,3 @@ form h3, input {
     padding: 12px 17px;
     margin-top: 50px;
 }
-

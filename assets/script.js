@@ -45,16 +45,24 @@ let x = 0;
 function questionScroller () {
     if (x<4) {
         $question.textContent = questions[x];
-        $choi1.append(answerChoices[x][0]);
-        $choi2.append(answerChoices[x][1]);
-        $choi3.append(answerChoices[x][2]);
-        $choi4.append(answerChoices[x][3]);
+        $choi1.textContent = (answerChoices[x][0]);
+        $choi2.textContent = (answerChoices[x][1]);
+        $choi3.textContent = (answerChoices[x][2]);
+        $choi4.textContent = (answerChoices[x][3]);
         $choice1.value = answerChoices[x][0];
         $choice2.value = answerChoices[x][1];
         $choice3.value = answerChoices[x][2];
         $choice4.value = answerChoices[x][3];
         x++;
+        document.getElementById("choice1").checked = false;
+        document.getElementById("choice2").checked = false;
+        document.getElementById("choice3").checked = false;
+        document.getElementById("choice4").checked = false;
     }
+
+    // if(x>0) {
+    //     document.querySelector('input[name="question"]:checked').checked = false;
+    // }
 }
 
 $startbutton.addEventListener("click", function() {
