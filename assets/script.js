@@ -24,10 +24,10 @@ const answerChoices = [["Section","Article","Aside","Img"],
 ["length","concat","slice","unshift"],
 ["number","boolean","string","undefined"],
 ["row","row-reverse","column","column-reverse"]];
-let secondsLeft = 5;
 
+let secondsLeft = 30;
 function setTimer() {
-    $timer.textContent = `Time Left: 15 seconds left`;
+    $timer.textContent = `Time Left: 30 seconds left`;
     let timerInterval = setInterval(function() {
         secondsLeft = secondsLeft - 1;
         $timer.textContent = `Time Left: ${secondsLeft} seconds left`;
@@ -43,17 +43,19 @@ function setTimer() {
             $startingHeader.textContent = "Time's Up";
             document.querySelector("#info").textContent = "Click START button to try again!"
             $startingMessage.style.display = "inherit";
-            secondsLeft = 5;
+            secondsLeft = 30;
             scoreMod = 0;
+            $timer.style.color = "grey";
         }
         if(scrollIndex === 6) {
             clearInterval(timerInterval);
-            $timer.textContent = '';
+            $timer.textContent = "";
         }
     }, 1000);
 }
 
 let scrollIndex = 0;
+let finalScore = 0;
 function questionScroller () {
     if (scrollIndex<5) {
         $quizResponse.style.display = "none";
@@ -76,8 +78,16 @@ function questionScroller () {
         $choice4.checked = false;
     } else if (scrollIndex === 5) {
         finalScore = secondsLeft - scoreMod;
-        alert(`Your final score is ${finalScore}`);
+        if (finalScore < 0) {
+            finalScore = 0;
+        }
         scrollIndex++;
+        $questionForm.style.display = "none";
+        $timer.style.display = "none";
+        $startingHeader.textContent = "You Finished!";
+        document.querySelector("#info").textContent = `Your final score is ${finalScore} points`;
+        $startingMessage.style.display = "inherit";
+        $startbutton.style.display= "none";
     }
 }
 
@@ -91,7 +101,7 @@ function answerChecker (e) {
         $quizResponse.textContent = "That is incorrect";
         $quizResponse.style.display = "block";
         $quizResponse.style.color = "red";
-        scoreMod = scoreMod + 1;
+        scoreMod = scoreMod + 5;
     }
 };
 
@@ -104,6 +114,9 @@ $startbutton.addEventListener("click", function() {
 
 $nextButton.addEventListener("click", function(e) {
     e.preventDefault();
+    if ($choice1.checked === false && $choice2.checked === false && $choice3.checked === false && $choice4.checked === false) {
+        return;
+    }
     questionScroller();
 });
 
@@ -111,4 +124,11 @@ $choice1.addEventListener("click", answerChecker)
 $choice2.addEventListener("click", answerChecker)
 $choice3.addEventListener("click", answerChecker)
 $choice4.addEventListener("click", answerChecker)
+
+// $questionForm.addEventListener("click", function(e) {
+//     if (e.target.matches("input")) {
+//         answerChecker(e);
+//     }
+//     console.log(e);
+// });
 
