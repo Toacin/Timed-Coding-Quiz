@@ -13,7 +13,7 @@ main {
     background-color: rgba(255,255,255,1);
     width: 80%;
     margin: auto;
-    height: 800px;
+    min-height: 800px;
     border-radius: 30px;
     box-shadow: 4px 4px 4px;
     display: flex;
@@ -25,11 +25,11 @@ main {
 }
 
 #timer {
-    position: absolute;
-    top: 61px;
-    right: 128px;
+    align-self: flex-end;
     font-size: 1.7em;
     color: grey;
+    padding: 40px;
+    margin: -135px 55px 0px 0px;
 }
 
 #startingMessage {
@@ -39,12 +39,14 @@ main {
 }
 
 #startingHeader {
-    font-size: 3em;
+    font-size: 4em;
     margin: 40px 0px;
+    width: 90%;
+    text-align: center;
 }
 
 #info {
-    font-size: 1.5em;
+    font-size: 2em;
     margin: 40px 0px;
     width: 60%;
     text-align: center;
@@ -84,6 +86,7 @@ form h3, input {
     display: flex;
     align-items: center;
     margin: 20px;
+    font-size: .75em;
 }
 
 #next-button {

@@ -16,23 +16,23 @@
         <p id="timer"></p>
         <section id="startingMessage">
             <h2 id="startingHeader">Welcome to the timed coding quiz!</h2>
-            <p id="info">This quiz will challenge your skills on the basics of HTML, CSS, and Javascript. Press the start button to begin. Note: it is timed! Get ready!</p>
+            <p id="info">This quiz will challenge your skills on the basics of HTML, CSS, and Javascript. Press the start button to begin. Note: timer starts when you click start! Get ready!</p>
             <button id="starting-button">START</button>
         </section>
         <form>
             <h3 id="question">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus corporis amet, incidunt eius reiciendis id obcaecati rerum voluptatem laudantium.?</h3>
-            <p class="choices">
-                <input type="radio" name="question">Hello<br>
-            </p>
-            <p class="choices">
-                <input type="radio" name="question">Hello<br>
-            </p>
-            <p class="choices">
-                <input type="radio" name="question">Hello<br>
-            </p>
-            <p class="choices">
-                <input type="radio" name="question">Hello<br>
-            </p>
+            <div class="choices" id="choi1" data-place="1">
+                <input type="radio" id="choice1" name="question" value="">
+            </div>
+            <div class="choices" id="choi2" data-place="2">
+                <input type="radio" id="choice2" name="question" value="">
+            </div>
+            <div class="choices" id="choi3" data-place="3">
+                <input type="radio" id="choice3" name="question" value="">
+            </div>
+            <div class="choices" id="choi4" data-place="4">
+                <input type="radio" id="choice4" name="question" value="">
+            </div>
             <button id="next-button">Next</button> 
         </form>
     </main>
