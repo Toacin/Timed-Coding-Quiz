@@ -21,6 +21,7 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-bottom: 40px;
 }
 
 #timer {
@@ -32,7 +33,7 @@ main {
 }
 
 #startingMessage {
-    display: none;
+    display: inherit;
     flex-direction: column;
     align-items: center;
 }
@@ -45,6 +46,8 @@ main {
 #info {
     font-size: 1.5em;
     margin: 40px 0px;
+    width: 60%;
+    text-align: center;
 }
 
 #starting-button, #next-button {
@@ -67,7 +70,7 @@ main {
 
 
 form {
-    display: block;
+    display: none;
     font-size: 3em;
     width: 75%;
 }
