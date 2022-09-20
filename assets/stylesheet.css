@@ -52,7 +52,7 @@ main {
     text-align: center;
 }
 
-#starting-button, #next-button, #clear {
+#starting-button, #next-button, #clear, #home{
     background-color: rgba(39, 245, 225, 1);
     color: white;
     padding: 15px 30px;
@@ -63,9 +63,10 @@ main {
     border-radius: 20px;
     margin: 30px;
     border: none;
+    font-family: fantasy, sans-serif;
 }
 
-#starting-button:hover, #next-button:hover, #clear:hover {
+#starting-button:hover, #next-button:hover, #clear:hover, #home:hover{
     cursor: pointer;
     background-color: rgba(50, 166, 154, 1);
 }

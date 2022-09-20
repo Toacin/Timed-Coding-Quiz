@@ -24,7 +24,6 @@ const answerChoices = [["Section","Article","Aside","Img"],
 ["length","concat","slice","unshift"],
 ["number","boolean","string","undefined"],
 ["row","row-reverse","column","column-reverse"]];
-// const highScoreLib = []
 
 let secondsLeft = 30;
 function setTimer() {
@@ -111,24 +110,30 @@ function scoreScreen() {
     $startingMessage.appendChild($hsSection);
 
     $hsFormSubmit.addEventListener("click", function() {
-        savedScore = {
-            initials: $hsInput.value,
-            highScoreEntry: finalScore
-        }
-        if (JSON.parse(localStorage.getItem("scores-list"))) {
-            highScoreLib = JSON.parse(localStorage.getItem("scores-list"));
+        if ($hsInput.value.trim().length === 2) {
+            savedScore = {
+                initials: $hsInput.value.trim().toUpperCase(),
+                highScoreEntry: finalScore
+            };
+            if (JSON.parse(localStorage.getItem("scores-list"))) {
+                highScoreLib = JSON.parse(localStorage.getItem("scores-list"));
+            } else {
+                highScoreLib = [];
+            }
+            highScoreLib.push(savedScore);
+            console.log(highScoreLib);
+            localStorage.setItem("scores-list", JSON.stringify(highScoreLib));
+            highScore();
         } else {
-            highScoreLib = [];
+            alert("Please enter only 2 characters for initials");
+            return;
         }
-        highScoreLib.push(savedScore);
-        console.log(highScoreLib);
-        localStorage.setItem("scores-list", JSON.stringify(highScoreLib));
-        highScore();
     })
 };
 
 function highScore() {
     $startingMessage.style.display = "none";
+    $questionForm.style.display = "none";
     document.querySelector("#highscore").style.display = "flex";
     if (JSON.parse(localStorage.getItem("scores-list"))) {
         localHighScoreLib = JSON.parse(localStorage.getItem("scores-list"));
@@ -148,6 +153,10 @@ function highScore() {
         localStorage.clear("scores-list");
         highScore();
 
+    })
+    document.querySelector("#home").addEventListener("click", function() {
+        document.querySelector("#highscore").style.display = "none";
+        init();
     })
 }
 
@@ -180,10 +189,10 @@ $nextButton.addEventListener("click", function(e) {
     questionScroller();
 });
 
-$choice1.addEventListener("click", answerChecker)
-$choice2.addEventListener("click", answerChecker)
-$choice3.addEventListener("click", answerChecker)
-$choice4.addEventListener("click", answerChecker)
+$choice1.addEventListener("click", answerChecker);
+$choice2.addEventListener("click", answerChecker);
+$choice3.addEventListener("click", answerChecker);
+$choice4.addEventListener("click", answerChecker);
 
 // $questionForm.addEventListener("click", function(e) {
 //     if (e.target.matches("input")) {
