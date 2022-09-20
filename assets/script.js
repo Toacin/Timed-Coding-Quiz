@@ -24,6 +24,7 @@ const answerChoices = [["Section","Article","Aside","Img"],
 ["length","concat","slice","unshift"],
 ["number","boolean","string","undefined"],
 ["row","row-reverse","column","column-reverse"]];
+// const highScoreLib = []
 
 let secondsLeft = 30;
 function setTimer() {
@@ -98,7 +99,8 @@ function scoreScreen() {
     $hsSection.setAttribute("style", "display: flex; width: 70%; font-size: 1.5em; justify-content:center; align-items: center;")
     const $hsMessage = document.createElement("p");
     $hsMessage.textContent = "Enter initials to save high score:";
-    const $hsInput = document.createElement("input");
+    $hsMessage.style.width = "auto";
+    $hsInput = document.createElement("input");
     $hsInput.setAttribute("type", "text");
     const $hsFormSubmit = document.createElement("button")
     $hsFormSubmit.textContent = "Submit";
@@ -107,7 +109,47 @@ function scoreScreen() {
     $hsSection.appendChild($hsInput);
     $hsSection.appendChild($hsFormSubmit);
     $startingMessage.appendChild($hsSection);
+
+    $hsFormSubmit.addEventListener("click", function() {
+        savedScore = {
+            initials: $hsInput.value,
+            highScoreEntry: finalScore
+        }
+        if (JSON.parse(localStorage.getItem("scores-list"))) {
+            highScoreLib = JSON.parse(localStorage.getItem("scores-list"));
+        } else {
+            highScoreLib = [];
+        }
+        highScoreLib.push(savedScore);
+        console.log(highScoreLib);
+        localStorage.setItem("scores-list", JSON.stringify(highScoreLib));
+        highScore();
+    })
 };
+
+function highScore() {
+    $startingMessage.style.display = "none";
+    document.querySelector("#highscore").style.display = "flex";
+    if (JSON.parse(localStorage.getItem("scores-list"))) {
+        localHighScoreLib = JSON.parse(localStorage.getItem("scores-list"));
+    } else {
+        localHighScoreLib = [];
+        document.querySelector("#scoresList").innerHTML = "";
+    }
+
+    for (i=0; i<localHighScoreLib.length; i++) {
+        let eachUser = localHighScoreLib[i];
+        let $newEntry = document.createElement("li");
+        $newEntry.textContent = `${eachUser.initials} - ${eachUser.highScoreEntry}`;
+        document.querySelector("#scoresList").appendChild($newEntry);
+    }
+
+    document.querySelector("#clear").addEventListener("click", function() {
+        localStorage.clear("scores-list");
+        highScore();
+
+    })
+}
 
 let scoreMod = 0;
 function answerChecker (e) {

@@ -52,7 +52,7 @@ main {
     text-align: center;
 }
 
-#starting-button, #next-button {
+#starting-button, #next-button, #clear {
     background-color: rgba(39, 245, 225, 1);
     color: white;
     padding: 15px 30px;
@@ -65,7 +65,7 @@ main {
     border: none;
 }
 
-#starting-button:hover, #next-button:hover {
+#starting-button:hover, #next-button:hover, #clear:hover {
     cursor: pointer;
     background-color: rgba(50, 166, 154, 1);
 }
@@ -95,4 +95,24 @@ form h3, input {
 
 #quizResponse {
     font-size: .7em;
+}
+
+#highscore {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#highscore h2{
+    font-size: 4em;
+}
+
+#highscore ul {
+    margin-top: 30px;
+}
+
+#highscore li {
+    padding: 10px;
+    font-size: 2em;
 }
