@@ -82,14 +82,32 @@ function questionScroller () {
             finalScore = 0;
         }
         scrollIndex++;
-        $questionForm.style.display = "none";
-        $timer.style.display = "none";
-        $startingHeader.textContent = "You Finished!";
-        document.querySelector("#info").textContent = `Your final score is ${finalScore} points`;
-        $startingMessage.style.display = "inherit";
-        $startbutton.style.display= "none";
+        scoreScreen();
     }
 }
+
+function scoreScreen() {
+    $questionForm.style.display = "none";
+    $timer.style.display = "none";
+    $startingHeader.textContent = "You Finished!";
+    document.querySelector("#info").textContent = `Your final score is ${finalScore} points`;
+    $startingMessage.style.display = "inherit";
+    $startbutton.style.display= "none";
+
+    const $hsSection = document.createElement("section");
+    $hsSection.setAttribute("style", "display: flex; width: 70%; font-size: 1.5em; justify-content:center; align-items: center;")
+    const $hsMessage = document.createElement("p");
+    $hsMessage.textContent = "Enter initials to save high score:";
+    const $hsInput = document.createElement("input");
+    $hsInput.setAttribute("type", "text");
+    const $hsFormSubmit = document.createElement("button")
+    $hsFormSubmit.textContent = "Submit";
+
+    $hsSection.appendChild($hsMessage);
+    $hsSection.appendChild($hsInput);
+    $hsSection.appendChild($hsFormSubmit);
+    $startingMessage.appendChild($hsSection);
+};
 
 let scoreMod = 0;
 function answerChecker (e) {
