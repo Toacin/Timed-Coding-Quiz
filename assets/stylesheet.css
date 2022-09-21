@@ -1,9 +1,9 @@
 /* background image and page fonts*/
 body {
+    font-family: fantasy, sans-serif;
     background-image: url("../assets/Images/BackgroundImg.jpg");
     background-size: cover;
     background-position: center;
-    font-family: fantasy, sans-serif;
 }
 
 /* header and its child elements styles */
