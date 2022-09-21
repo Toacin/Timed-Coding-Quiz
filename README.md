@@ -8,7 +8,7 @@ The quiz itself consists of 5 multiple choice questions, and as an added challen
 
 ### Developing the Application
 
-My gratification from completing this application is immeasurable. Not particularly because it works, but more so because of my deepened understanding javascript functions and web APIs. When I set out myself to the task of making this quiz, I knew javascript is where I'd face most my challenges. And indeed it was. Namely, DOM manipulation was a key target for me to work on. I struggled to find reasoning behind manipulating DOM elements when functions can simply display or hide existing HTML markup. While that was still a principle I applied here in the quiz, it wasn't until I got to developing the highscores leaderboard that I truly understood the value of DOM manipulation through Javascript. Having local data store scores and changing the DOM accordingly really was the most fun part of this challenge to me because that is where it all came together. For future projects, I will applying these learned skills.
+My gratification from completing this application is immeasurable. Not particularly because it works, but more so because of my deepened understanding of javascript functions and web APIs. When I set out myself to the task of making this quiz, I knew javascript is where I'd face most my challenges. And indeed it was. Namely, DOM manipulation was a key target for me to work on. I struggled to find reasoning behind manipulating DOM elements when functions can simply display or hide existing HTML markup. While that was still a principle I applied here in the quiz, it wasn't until I got to developing the highscores leaderboard that I truly understood the value of DOM manipulation through Javascript. Having local data store scores and changing the DOM accordingly really was the most fun part of this challenge to me because that is where it all came together. For future projects, I will aim to further develop and apply these learned skills.
 
 ### Future Development of this Application
 
@@ -17,7 +17,7 @@ Some things to improve will be to add many more questions. Currently it is the s
 ---
 ## Deployed Page link
 
-https://toacin.github.io/Password-Generator/
+https://toacin.github.io/Timed-Coding-Quiz/index.html
 
 ## Installation
 
@@ -34,4 +34,10 @@ Special thanks to the UofA Coding Bootcamp teaching staff for guidance and assis
 Open Source
 
 ---
+## Images of Application
 
+![Start Screen](/assets/Images/StartScreen.JPG "Start Screen")  
+![Quiz Screen](/assets/Images/QuestionsPage.JPG "Quiz Screen")  
+![Finished Screen](/assets/Images/YouFinished.JPG "Finished Screen")  
+![Time's Up Screen](/assets/Images/TimesUp.JPG "Time's Up Screen")  
+![HighScore Leaderboard](/assets/Images/HighScore.JPG "HighScore Leaderboard")  
