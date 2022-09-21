@@ -1,6 +1,6 @@
 /* background image and page fonts*/
 body {
-    background-image: url("../assets/BackgroundImg.jpg");
+    background-image: url("../assets/Images/BackgroundImg.jpg");
     background-size: cover;
     background-position: center;
     font-family: fantasy, sans-serif;
