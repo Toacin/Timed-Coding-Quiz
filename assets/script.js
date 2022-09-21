@@ -19,7 +19,7 @@ const $quizResponse = document.querySelector("#quizResponse");
 const questions = ["All of the following are semantic HTML container elements except?",
 "CSS selectors include all of the following except?",
 "Which of the following is a property of an array in Javascript?",
-"What primitive data is type is 'the number 4' in Javascript?",
+"What primitive data type is 'the number 4' in Javascript?",
 "What is the default flex-direction for flex containers in CSS?"];
 const answerChoices = [["Section","Article","Aside","Img"],
 ["*","^","#id",".class"],
@@ -30,26 +30,26 @@ const answerChoices = [["Section","Article","Aside","Img"],
 // timer function below
 let secondsLeft = 60;
 function setTimer() {
-    $timer.textContent = `Time Left: 60 seconds left`;
+    $timer.textContent = `Time Left: 60 seconds`;
+    $timer.style.color = "grey";
     let timerInterval = setInterval(function() {
         secondsLeft = secondsLeft - 1;
-        $timer.textContent = `Time Left: ${secondsLeft} seconds left`;
+        $timer.textContent = `Time Left: ${secondsLeft} seconds`;
 
         // timer turns color red at 5 seconds
-        if(secondsLeft <= 5) {
+        if(secondsLeft <= 10) {
             $timer.style.color = "red";
         }
         // timer changes starting splash screen to try again if user runs out of time
         if(secondsLeft <= 0) {
             clearInterval(timerInterval);
-            $timer.textContent = `Time Left: 0 seconds left`;
+            $timer.textContent = `Time Left: 0 seconds`;
             scrollIndex = 0;
             $questionForm.style.display = "none";
             $startingHeader.textContent = "Time's Up";
             document.querySelector("#info").textContent = "Click START button to try again!"
             $startingMessage.style.display = "inherit";
             secondsLeft = 60;
-            $timer.style.color = "grey";
         }
         // clear timer if user reaches last question
         if(scrollIndex === 6) {
@@ -111,6 +111,7 @@ function scoreScreen() {
     $startingMessage.style.display = "inherit";
     $startbutton.style.display= "none";
 
+    // create append section that will collect user initials
     const $hsSection = document.createElement("section");
     $hsSection.setAttribute("style", "display: flex; width: 100%; font-size: 1.5em; justify-content:center; align-items: center;")
     const $hsMessage = document.createElement("p");
@@ -211,7 +212,7 @@ function answerChecker (e) {
         $quizResponse.style.display = "block";
         $quizResponse.style.color = "red";
         // reduct time if answer is wrong
-        secondsLeft = secondsLeft - 8;
+        secondsLeft = secondsLeft - 6;
     }
 };
 
