@@ -35,7 +35,7 @@ function setTimer() {
         if(secondsLeft <= 5) {
             $timer.style.color = "red";
         }
-        if(secondsLeft === 0) {
+        if(secondsLeft <= 0) {
             clearInterval(timerInterval);
             $timer.textContent = `Time Left: 0 seconds left`;
             scrollIndex = 0;
@@ -44,13 +44,15 @@ function setTimer() {
             document.querySelector("#info").textContent = "Click START button to try again!"
             $startingMessage.style.display = "inherit";
             secondsLeft = 30;
-            scoreMod = 0;
             $timer.style.color = "grey";
         }
         if(scrollIndex === 6) {
             clearInterval(timerInterval);
             $timer.textContent = "";
         }
+        document.querySelector("#leaderboard").addEventListener("click", function() {
+            clearInterval(timerInterval);
+        })
     }, 1000);
 }
 
@@ -77,7 +79,7 @@ function questionScroller () {
         $choice3.checked = false;
         $choice4.checked = false;
     } else if (scrollIndex === 5) {
-        finalScore = secondsLeft - scoreMod;
+        finalScore = secondsLeft;
         if (finalScore < 0) {
             finalScore = 0;
         }
@@ -95,14 +97,15 @@ function scoreScreen() {
     $startbutton.style.display= "none";
 
     const $hsSection = document.createElement("section");
-    $hsSection.setAttribute("style", "display: flex; width: 70%; font-size: 1.5em; justify-content:center; align-items: center;")
+    $hsSection.setAttribute("style", "display: flex; width: 100%; font-size: 1.5em; justify-content:center; align-items: center;")
     const $hsMessage = document.createElement("p");
-    $hsMessage.textContent = "Enter initials to save high score:";
+    $hsMessage.textContent = "Enter initials to save score:";
     $hsMessage.style.width = "auto";
     $hsInput = document.createElement("input");
     $hsInput.setAttribute("type", "text");
     const $hsFormSubmit = document.createElement("button")
     $hsFormSubmit.textContent = "Submit";
+    $hsFormSubmit.id = "submit"
 
     $hsSection.appendChild($hsMessage);
     $hsSection.appendChild($hsInput);
@@ -110,7 +113,18 @@ function scoreScreen() {
     $startingMessage.appendChild($hsSection);
 
     $hsFormSubmit.addEventListener("click", function() {
-        if ($hsInput.value.trim().length === 2) {
+        if ($hsInput.value.trim().length !== 2) {
+            alert("Please enter 2 characters for initials");
+            return;
+        } else {
+            for (i=0; i<$hsInput.value.trim().length; i++) {
+                if (["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].includes($hsInput.value.trim().toUpperCase().split("")[i])) {
+                } else {
+                    alert("Please enter only letters");
+                    return;
+                }
+            }
+
             savedScore = {
                 initials: $hsInput.value.trim().toUpperCase(),
                 highScoreEntry: finalScore
@@ -124,14 +138,12 @@ function scoreScreen() {
             console.log(highScoreLib);
             localStorage.setItem("scores-list", JSON.stringify(highScoreLib));
             highScore();
-        } else {
-            alert("Please enter only 2 characters for initials");
-            return;
         }
     })
 };
 
 function highScore() {
+    $timer.style.display = "none";
     $startingMessage.style.display = "none";
     $questionForm.style.display = "none";
     document.querySelector("#highscore").style.display = "flex";
@@ -145,12 +157,12 @@ function highScore() {
     for (i=0; i<localHighScoreLib.length; i++) {
         let eachUser = localHighScoreLib[i];
         let $newEntry = document.createElement("li");
-        $newEntry.textContent = `${eachUser.initials} - ${eachUser.highScoreEntry}`;
+        $newEntry.textContent = `${eachUser.initials} — ${eachUser.highScoreEntry}`;
         document.querySelector("#scoresList").appendChild($newEntry);
     }
 
     document.querySelector("#clear").addEventListener("click", function() {
-        localStorage.clear("scores-list");
+        localStorage.removeItem("scores-list");
         highScore();
 
     })
@@ -160,9 +172,8 @@ function highScore() {
     })
 }
 
-let scoreMod = 0;
 function answerChecker (e) {
-    if (e.currentTarget.value == "Img" || e.currentTarget.value == "^" || e.currentTarget.value == "length" || e.currentTarget.value == "string" || e.currentTarget.value == "row") {
+    if (e.target.value == "Img" || e.target.value == "^" || e.target.value == "length" || e.target.value == "string" || e.target.value == "row") {
         $quizResponse.textContent = "That's correct!";
         $quizResponse.style.display = "block";
         $quizResponse.style.color = "green";
@@ -170,7 +181,7 @@ function answerChecker (e) {
         $quizResponse.textContent = "That is incorrect";
         $quizResponse.style.display = "block";
         $quizResponse.style.color = "red";
-        scoreMod = scoreMod + 5;
+        secondsLeft = secondsLeft - 4;
     }
 };
 
@@ -189,15 +200,20 @@ $nextButton.addEventListener("click", function(e) {
     questionScroller();
 });
 
-$choice1.addEventListener("click", answerChecker);
-$choice2.addEventListener("click", answerChecker);
-$choice3.addEventListener("click", answerChecker);
-$choice4.addEventListener("click", answerChecker);
+// $choice1.addEventListener("click", answerChecker);
+// $choice2.addEventListener("click", answerChecker);
+// $choice3.addEventListener("click", answerChecker);
+// $choice4.addEventListener("click", answerChecker);
 
-// $questionForm.addEventListener("click", function(e) {
-//     if (e.target.matches("input")) {
-//         answerChecker(e);
-//     }
-//     console.log(e);
-// });
+$questionForm.addEventListener("click", function(e) {
+    if (e.target.matches("input")) {
+        answerChecker(e);
+    }
+    console.log(e);
+});
 
+document.querySelector("#leaderboard").addEventListener("click", function() {
+    if (document.querySelector("#highscore").style.display !== "flex") {
+        highScore();
+    }
+})

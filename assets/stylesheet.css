@@ -1,12 +1,45 @@
 body {
-    background-color: rgba(39, 245, 225, 0.17);
+    background-image: url("../assets/BackgroundImg.jpg");
+    background-size: cover;
+    background-position: center;
     font-family: fantasy, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header div {
+    min-width: 15%;
 }
 
 h1 {
     text-align: center;
     font-size: 4em;
     margin: 50px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 15%;
+}
+
+nav:hover {
+    cursor: pointer;
+}
+
+img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+nav p {
+    font-size: 2em;
+    text-decoration: underline;
 }
 
 main {
@@ -29,7 +62,7 @@ main {
     font-size: 1.7em;
     color: grey;
     padding: 40px;
-    margin: -135px 55px 0px 0px;
+    margin: -100px 55px 0px 0px;
 }
 
 #startingMessage {
@@ -53,7 +86,7 @@ main {
 }
 
 #starting-button, #next-button, #clear, #home{
-    background-color: rgba(39, 245, 225, 1);
+    background-color: rgba(115,205,219,1);
     color: white;
     padding: 15px 30px;
     text-align: center;
@@ -66,9 +99,22 @@ main {
     font-family: fantasy, sans-serif;
 }
 
-#starting-button:hover, #next-button:hover, #clear:hover, #home:hover{
+#submit {
+    background-color: rgba(115,205,219,1);
+    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 20px;
+    border: none;
+    font-family: fantasy, sans-serif;
+}
+
+#starting-button:hover, #next-button:hover, #clear:hover, #home:hover, #submit:hover{
     cursor: pointer;
-    background-color: rgba(50, 166, 154, 1);
+    background-color: rgba(0,145,162,1);
 }
 
 form {
@@ -107,13 +153,28 @@ form h3, input {
 
 #highscore h2{
     font-size: 4em;
+    margin-top:40px;
 }
 
 #highscore ul {
-    margin-top: 30px;
+    margin-top: 23px;
 }
 
 #highscore li {
-    padding: 10px;
+    padding: 10px 70px;
     font-size: 2em;
+}
+
+#highscore li:nth-child(odd) {
+    background-color: rgba(4,90,105, 1);
+    color: white;
+}
+
+#clear {
+    margin: 30px 30px 12px 30px;
+    padding: 11px 30px;
+}
+
+#home {
+    margin: 12px 30px;
 }
