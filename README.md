@@ -10,6 +10,8 @@ The quiz itself consists of 5 multiple choice questions, and as an added challen
 
 My gratification from completing this application is immeasurable. Not particularly because it works, but more so because of my deepened understanding of javascript functions and web APIs. When I set out myself to the task of making this quiz, I knew javascript is where I'd face most my challenges. And indeed it was. Namely, DOM manipulation was a key target for me to work on. I struggled to find reasoning behind manipulating DOM elements when functions can simply display or hide existing HTML markup. While that was still a principle I applied here in the quiz, it wasn't until I got to developing the highscores leaderboard that I truly understood the value of DOM manipulation through Javascript. Having local data store scores and changing the DOM accordingly really was the most fun part of this challenge to me because that is where it all came together. For future projects, I will aim to further develop and apply these learned skills.
 
+For styling, it was done from scratch through CSS without use of any frameworks.
+
 ### Future Development of this Application
 
 Some things to improve will be to add many more questions. Currently it is the same 5 questions being cycled through, and moreover, in the same order each time. Ideally, I'd like to create a library of atleast 100-200 questions, but as a proof of concept, this will have to do for now as I try to prioritize my learning elsewhere. 
@@ -36,8 +38,17 @@ Open Source
 ---
 ## Images of Application
 
+### Start Screen 
 ![Start Screen](/assets/Images/StartScreen.JPG "Start Screen")  
+
+### Quiz Screen
 ![Quiz Screen](/assets/Images/QuestionsPage.JPG "Quiz Screen")  
+
+### Finished Quiz Screen
 ![Finished Screen](/assets/Images/YouFinished.JPG "Finished Screen")  
+
+### Time's Up Screen
 ![Time's Up Screen](/assets/Images/TimesUp.JPG "Time's Up Screen")  
+
+### High Score Leaderboard Screen
 ![HighScore Leaderboard](/assets/Images/HighScore.JPG "HighScore Leaderboard")  
