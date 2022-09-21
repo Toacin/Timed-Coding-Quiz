@@ -1,3 +1,4 @@
+/* background image and page fonts*/
 body {
     background-image: url("../assets/BackgroundImg.jpg");
     background-size: cover;
@@ -5,12 +6,14 @@ body {
     font-family: fantasy, sans-serif;
 }
 
+/* header and its child elements styles */
 header {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
+/* empty div with width used for ease of flexbox spacing i.e. parent el's justify cont */
 header div {
     min-width: 15%;
 }
@@ -21,6 +24,7 @@ h1 {
     margin: 50px;
 }
 
+/* nav element on right side of screen with highscore leaderboard link */
 nav {
     display: flex;
     justify-content: center;
@@ -42,6 +46,7 @@ nav p {
     text-decoration: underline;
 }
 
+/* style for main part of page */
 main {
     background-color: rgba(255,255,255,1);
     width: 80%;
@@ -57,6 +62,7 @@ main {
     margin-bottom: 40px;
 }
 
+/* style for timer */
 #timer {
     align-self: flex-end;
     font-size: 1.7em;
@@ -65,6 +71,7 @@ main {
     margin: -100px 55px 0px 0px;
 }
 
+/* starting splash screen and children's elements */
 #startingMessage {
     display: inherit;
     flex-direction: column;
@@ -83,8 +90,10 @@ main {
     margin: 40px 0px;
     width: 60%;
     text-align: center;
+    line-height: 40px;
 }
 
+/* most buttons in application styled below, including changes in hover state */
 #starting-button, #next-button, #clear, #home{
     background-color: rgba(115,205,219,1);
     color: white;
@@ -117,6 +126,7 @@ main {
     background-color: rgba(0,145,162,1);
 }
 
+/* questions screen styled here */
 form {
     display: none;
     font-size: 3em;
@@ -144,6 +154,7 @@ form h3, input {
     font-size: .7em;
 }
 
+/* highscore screen styled here */
 #highscore {
     display: none;
     flex-direction: column;
@@ -158,11 +169,15 @@ form h3, input {
 
 #highscore ul {
     margin-top: 23px;
+    width:100%;
 }
 
+/* appending scores in highscore screen styled here in advanced despite not yet existing in markup*/
 #highscore li {
-    padding: 10px 70px;
+    padding: 10px 0px;
+    width:100%;
     font-size: 2em;
+    text-align: center;
 }
 
 #highscore li:nth-child(odd) {
@@ -170,11 +185,12 @@ form h3, input {
     color: white;
 }
 
+/* buttons on highscore screen styled here */
 #clear {
-    margin: 30px 30px 12px 30px;
+    margin: 30px 15px 12px 30px;
     padding: 11px 30px;
 }
 
 #home {
-    margin: 12px 30px;
+    margin: 30px 30px 12px 15px;
 }
